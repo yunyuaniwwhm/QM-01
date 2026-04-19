@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <!-- 设置视口，为移动端响应式适配打下基础 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的任务管理中心</title>
+    <!-- 链接到我们自己的CSS文件 -->
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- 引入Font Awesome图标库 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- 1. 顶部区域 (Header) -->
+    <header class="site-header">
+        <h1 class="logo"><i class="fas fa-clipboard-list"></i> 任务看板</h1>
+        <div class="search-container">
+            <i class="fas fa-search"></i>
+            <!-- 搜索框，设置了placeholder和focus状态 -->
+            <input type="text" class="search-input" placeholder="搜索任务、项目或关键词..." aria-label="搜索框">
+        </div>
+        <!-- 新建任务按钮，具有 hover 和 focus 交互状态 -->
+        <button class="btn btn-primary" aria-label="新建任务">
+            <i class="fas fa-plus-circle"></i> 新建任务
+        </button>
+    </header>
+
+    <div class="app-container">
+        <!-- 2. 导航区域 (Navigation) -->
+        <nav class="side-nav" aria-label="主导航">
+            <ul class="nav-list">
+                <!-- active 类表示当前选中的页面 -->
+                <li class="nav-item active">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-tachometer-alt"></i>
+                        <span>工作台</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-tasks"></i>
+                        <span>我的任务</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span>日历</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-cog"></i>
+                        <span>设置</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- 3. 主内容区 (Main Content) -->
+        <main class="main-content">
+            <!-- 3.A 数据卡片区 -->
+            <section class="stats-section" aria-labelledby="stats-title">
+                <h2 id="stats-title"><i class="fas fa-chart-pie"></i> 数据概览</h2>
+                <div class="stats-cards">
+                    <!-- 卡片1：使用flex布局对齐内部元素 -->
+                    <div class="stat-card card-urgent">
+                        <div class="card-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>今日待办</h3>
+                            <p class="stat-number">5</p>
+                            <p class="stat-desc">项任务</p>
+                        </div>
+                    </div>
+                    <!-- 卡片2 -->
+                    <div class="stat-card card-completed">
+                        <div class="card-icon">
+                            <i class="fas fa-check-double"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>已完成</h3>
+                            <p class="stat-number">18</p>
+                            <p class="stat-desc">项任务</p>
+                        </div>
+                    </div>
+                    <!-- 额外卡片，展示更多数据 -->
+                    <div class="stat-card card-in-progress">
+                        <div class="card-icon">
+                            <i class="fas fa-sync-alt"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>进行中</h3>
+                            <p class="stat-number">7</p>
+                            <p class="stat-desc">项任务</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 3.B 任务列表区 -->
+            <section class="tasks-section" aria-labelledby="tasks-title">
+                <div class="section-header">
+                    <h2 id="tasks-title"><i class="fas fa-list-ul"></i> 任务列表</h2>
+                    <!-- 状态筛选器 -->
+                    <div class="filter-controls">
+                        <select class="filter-select" aria-label="按状态筛选任务">
+                            <option value="all">全部状态</option>
+                            <option value="pending">待开始</option>
+                            <option value="doing" selected>进行中</option>
+                            <option value="done">已完成</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="task-list">
+                    <!-- 任务项 1 - 进行中 -->
+                    <div class="task-item status-doing">
+                        <div class="task-preview">
+                            <h4 class="task-title">完成开发考核第一题页面</h4>
+                            <p class="task-desc">使用HTML和CSS实现任务管理静态页面，并确保响应式布局。</p>
+                            <div class="task-meta">
+                                <span class="meta-item"><i class="far fa-calendar"></i> 截止: 2026-04-25</span>
+                                <span class="meta-item"><i class="fas fa-user"></i> 负责人: 我</span>
+                            </div>
+                        </div>
+                        <div class="task-actions">
+                            <span class="status-badge badge-doing">进行中</span>
+                            <button class="btn-icon" aria-label="标记完成"><i class="far fa-check-circle"></i></button>
+                        </div>
+                    </div>
+                    <!-- 任务项 2 - 进行中 -->
+                    <div class="task-item status-doing">
+                        <div class="task-preview">
+                            <h4 class="task-title">学习CSS Flexbox布局</h4>
+                            <p class="task-desc">完成Flexbox青蛙小游戏，掌握主轴、交叉轴对齐方式。</p>
+                            <div class="task-meta">
+                                <span class="meta-item"><i class="far fa-calendar"></i> 截止: 2026-04-28</span>
+                                <span class="meta-item"><i class="fas fa-tag"></i> 学习</span>
+                            </div>
+                        </div>
+                        <div class="task-actions">
+                            <span class="status-badge badge-doing">进行中</span>
+                            <button class="btn-icon" aria-label="编辑任务"><i class="far fa-edit"></i></button>
+                        </div>
+                    </div>
+                    <!-- 任务项 3 - 已完成 -->
+                    <div class="task-item status-done">
+                        <div class="task-preview">
+                            <h4 class="task-title">安装并配置开发环境</h4>
+                            <p class="task-desc">安装 VS Code, Git, GitHub Desktop 并创建第一个仓库。</p>
+                            <div class="task-meta">
+                                <span class="meta-item"><i class="far fa-calendar"></i> 完成于: 2026-04-20</span>
+                                <span class="meta-item"><i class="fas fa-clock"></i> 耗时: 2小时</span>
+                            </div>
+                        </div>
+                        <div class="task-actions">
+                            <span class="status-badge badge-done">已完成</span>
+                            <button class="btn-icon" aria-label="查看详情"><i class="far fa-eye"></i></button>
+                        </div>
+                    </div>
+                    <!-- 任务项 4 - 已完成 -->
+                    <div class="task-item status-done">
+                        <div class="task-preview">
+                            <h4 class="task-title">阅读项目需求文档</h4>
+                            <p class="task-desc">仔细阅读 dev-2026-01 题目的所有要求和评分细则。</p>
+                            <div class="task-meta">
+                                <span class="meta-item"><i class="far fa-calendar"></i> 完成于: 2026-04-19</span>
+                                <span class="meta-item"><i class="fas fa-file-alt"></i> 文档</span>
+                            </div>
+                        </div>
+                        <div class="task-actions">
+                            <span class="status-badge badge-done">已完成</span>
+                            <button class="btn-icon" aria-label="重新打开"><i class="fas fa-redo"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 4. 附加信息模块 (今日日程) -->
+            <section class="schedule-section" aria-labelledby="schedule-title">
+                <h2 id="schedule-title"><i class="fas fa-calendar-day"></i> 今日日程</h2>
+                <ul class="schedule-list">
+                    <li class="schedule-item">
+                        <i class="far fa-clock schedule-icon"></i>
+                        <div class="schedule-details">
+                            <strong>10:00 - 11:30</strong>
+                            <p>团队每日站会 (线上)</p>
+                        </div>
+                    </li>
+                    <li class="schedule-item">
+                        <i class="far fa-clock schedule-icon"></i>
+                        <div class="schedule-details">
+                            <strong>14:00 - 15:30</strong>
+                            <p>前端代码评审 - 登录模块</p>
+                        </div>
+                    </li>
+                    <li class="schedule-item">
+                        <i class="far fa-clock schedule-icon"></i>
+                        <div class="schedule-details">
+                            <strong>16:00 - 17:00</strong>
+                            <p>与产品讨论下个迭代需求</p>
+                        </div>
+                    </li>
+                </ul>
+            </section>
+        </main>
+    </div>
+
+    <!-- 简单的页脚 -->
+    <footer class="site-footer">
+        <p>© 2026 启梦团队 - 开发方向考核 | 这是一个静态演示页面</p>
+    </footer>
+</body>
+</html>
